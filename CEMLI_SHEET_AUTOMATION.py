@@ -13,8 +13,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 CEMLI_NAME = input("Enter CEMLI / JIRA Name:- ")
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
-WebDriverManager.chromedriver().setup();
-WebDriver driver = new ChromeDriver();
+driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
 time.sleep(3)
 driver.maximize_window()
 print("\n")
