@@ -25,6 +25,8 @@ driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.as
 try:
     inputElement = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "i0116")))
     inputElement.send_keys(CREDENTIALS_LIST[0])
+    print("checkpoint-1")
+    sys.stdout.flush()
     submit_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "idSIButton9")))
     submit_button.click()
     SSOID = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "username")))
