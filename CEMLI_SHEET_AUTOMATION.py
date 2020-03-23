@@ -15,9 +15,11 @@ from selenium.common.exceptions import NoSuchElementException
 
 CREDENTIALS_LIST = ["nagasaikumar.golla@geappliances.com","515120537","NAsa@321ku"]
 CEMLI_NAME = os.getenv("CEMLI_SHEET")
+#os.getenv("CEMLI_SHEET")
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
 chrome_options = Options()  
 chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1366,768")
 driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe",options=chrome_options)
 time.sleep(3)
 driver.maximize_window()
@@ -49,7 +51,6 @@ try:
         print("Entered Cemli Page Already Exists \n https://geappliances.sharepoint.com/sites/erpdevops/SitePages/"+CEMLI_NAME+".aspx")
         sys.stdout.flush()
     else:
-        time.sleep(10)
         EditSourceClick = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "Ribbon.EditingTools.CPEditTab.Markup.Html.Menu.Html.EditSource-Large")))
         EditSourceClick.click()
         HTMLCode = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "PropertyEditor")))
