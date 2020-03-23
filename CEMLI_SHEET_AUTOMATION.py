@@ -13,7 +13,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 print ("Check")
+sys.stdout.flush()
 input1 = os.getenv("CEMLI_SHEET")
+print(input1)
 sys.stdout.flush()
 CEMLI_NAME = input("Enter CEMLI / JIRA Name:- ")
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
