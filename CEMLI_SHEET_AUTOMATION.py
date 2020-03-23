@@ -33,8 +33,6 @@ try:
     SSOPWD.send_keys(CREDENTIALS_LIST[2])
     SSOSUBMIT = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "submit")))
     SSOSUBMIT.click()
-	print("User Authentication Completed")
-	sys.stdout.flush()
     Remember = WebDriverWait(driver, 120).until(EC.visibility_of_element_located((By.ID, "idSIButton9")))
     Remember.click()
     AddNewPage = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "idHomePageNewWikiPage")))
