@@ -50,6 +50,7 @@ try:
         print("Entered Cemli Page Already Exists \n https://geappliances.sharepoint.com/sites/erpdevops/SitePages/"+CEMLI_NAME+".aspx")
         sys.stdout.flush()
     else:
+	time.sleep(10)
         EditSourceClick = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "Ribbon.EditingTools.CPEditTab.Markup.Html.Menu.Html.EditSource-Large")))
         EditSourceClick.click()
         HTMLCode = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "PropertyEditor")))
