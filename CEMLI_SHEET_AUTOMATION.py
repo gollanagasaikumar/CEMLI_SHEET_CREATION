@@ -1,6 +1,10 @@
+import os
+import sys
 import time
+import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options  
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,7 +12,9 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoSuchElementException
 
 CEMLI_NAME = input("Enter CEMLI / JIRA Name:- ")
-driver = webdriver.Chrome(ChromeDriverManager().install())
+#driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
+WebDriverManager.chromedriver().setup();
+WebDriver driver = new ChromeDriver();
 time.sleep(3)
 driver.maximize_window()
 print("\n")
