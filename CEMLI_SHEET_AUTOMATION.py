@@ -12,31 +12,29 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoSuchElementException
 
 
-print ("Check")
-sys.stdout.flush()
-input1 = os.getenv("CEMLI_SHEET")
-print(input1)
-sys.stdout.flush()
-CEMLI_NAME = input("Enter CEMLI / JIRA Name:- ")
+
+CREDENTIALS_LIST = ["nagasaikumar.golla@geappliances.com","515120537","NAsa@321ku"]
+CEMLI_NAME = os.getenv("CEMLI_SHEET")
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
 driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
 time.sleep(3)
 driver.maximize_window()
-print("\n")
-CEMLI_NAME = input("Enter CEMLI / JIRA Name:- ")
 print("***************** CEMLI Creation Started for " + CEMLI_NAME + "*****************")
+sys.stdout.flush()
 driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.aspx')
 try:
     inputElement = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "i0116")))
-    inputElement.send_keys('nagasaikumar.golla@geappliances.com')
+    inputElement.send_keys(CREDENTIALS_LIST[0])
     submit_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "idSIButton9")))
     submit_button.click()
     SSOID = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "username")))
-    SSOID.send_keys("515120537")
+    SSOID.send_keys(CREDENTIALS_LIST[1])
     SSOPWD = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "password")))
-    SSOPWD.send_keys("NAsa@321ku")
+    SSOPWD.send_keys(CREDENTIALS_LIST[2])
     SSOSUBMIT = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "submit")))
     SSOSUBMIT.click()
+	print("User Authentication Completed")
+	sys.stdout.flush()
     Remember = WebDriverWait(driver, 120).until(EC.visibility_of_element_located((By.ID, "idSIButton9")))
     Remember.click()
     AddNewPage = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "idHomePageNewWikiPage")))
@@ -73,7 +71,7 @@ try:
     ModuleSelection.click()
     JustClick = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//label[contains(@class,'ms-Label ReactFieldEditor-fieldTitle') and .//text()='Description']")))
     JustClick.click()
-    Description = driver.find_elements_by_xpath("//input[@placeholder='Enter value here']")[1].send_keys("NAsa@321ku")
+    Description = driver.find_elements_by_xpath("//input[@placeholder='Enter value here']")[1].send_keys(CEMLI_NAME)
     time.sleep(2)
     Platform = driver.find_elements_by_xpath("//span[contains(@class,'ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder') and .//text()='Select options']")[1].click()
     time.sleep(2)
@@ -90,13 +88,19 @@ try:
     Finalcheckout = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "statechangedialog_okbutton")))
     Finalcheckout.click()
     print ("CEMLI Sheet has been created succesfully please find the below CEMLI Sheet Link \n ")
+	sys.stdout.flush()
     print("https://geappliances.sharepoint.com/sites/erpdevops/SitePages/"+CEMLI_NAME+".aspx")
+	sys.stdout.flush()
 except NoSuchElementException:
     print ("Error Message :- Element Not Found and Execution got Failed \n Reason :- Element we are trying to access is not found or Slow Network Connection Time Out")
+	sys.stdout.flush()
 except StaleElementReferenceException:
     print ("Error Message :- Stale Element reference \n Reason :- Stale Element means an old element or no longer available element")
+	sys.stdout.flush()
 except:
     print ("Error Message :- Some Thing Went Wrong or Flow Terminated abruptly  \n")
+	sys.stdout.flush()
 finally:
     print ("***************** CEMLI Creation Completed *****************")
+	sys.stdout.flush()
     
