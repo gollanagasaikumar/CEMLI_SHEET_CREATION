@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoSuchElementException
 
+CEMLI_NAME = input("Enter CEMLI / JIRA Name:- ")
 driver = webdriver.Chrome(ChromeDriverManager().install())
 time.sleep(3)
 driver.maximize_window()
