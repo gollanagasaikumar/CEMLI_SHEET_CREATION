@@ -173,7 +173,7 @@ except:
 finally:
     end = datetime.now()
     elapsedTime = end - start
-    if(elapsedTime <= 60):
+    if(int(elapsedTime) <= 60):
         time = str(elapsedTime) + "s"
     else:
         seconds = str(math.ceil(int(elapsedTime.total_seconds())/60)).replace(".","m ")
