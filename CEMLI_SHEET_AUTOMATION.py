@@ -174,7 +174,8 @@ finally:
     end = datetime.now()
     elapsedTime = end - start
     if(int(elapsedTime.total_seconds()) <= 60):
-        time = str(elapsedTime) + "s"
+        seconds = str(elapsedTime)
+        time = seconds[5:9]+"s"
     else:
         seconds = str(math.ceil(int(elapsedTime.total_seconds())/60)).replace(".","m ")
         time = seconds[0:5]+"s "
