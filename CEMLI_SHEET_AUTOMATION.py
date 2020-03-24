@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-import datetime
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -29,6 +28,7 @@ print("***************** CEMLI Creation Started for " + CEMLI_NAME + "**********
 sys.stdout.flush()
 driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.aspx')
 try:
+    start = datetime.now()
     print(datetime.now().strftime("%m/%d/%Y, %H:%M:%S") + ": CEMLI Sheet Creation Started")	
     sys.stdout.flush()
     inputElement = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "i0116")))
@@ -171,7 +171,11 @@ except:
     print (now.strftime("%m/%d/%Y, %H:%M:%S") + ": Error Message :- Some Thing Went Wrong or Flow Terminated abruptly")
     sys.stdout.flush()
 finally:
-    print ("***************** CEMLI Creation Completed *****************")
+    end = datetime.now()
+    elapsedTime = end - start
+    seconds = str(int(elapsedTime.total_seconds())/60).replace(".","m ")
+    time = seconds[0:4]+"s "
+    print ("***************** CEMLI Creation Completed in " + time + "*****************")
     sys.stdout.flush()
 		
 
