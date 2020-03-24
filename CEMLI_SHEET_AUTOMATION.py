@@ -173,8 +173,11 @@ except:
 finally:
     end = datetime.now()
     elapsedTime = end - start
-    seconds = str(int(elapsedTime.total_seconds())*100/60).replace(".","m ")
-    time = seconds[0:5]+"s "
+    if(elapsedTime <= 60):
+        time = 
+    else:
+        seconds = str(math.ceil(int(elapsedTime.total_seconds())/60)).replace(".","m ")
+        time = seconds[0:5]+"s "
     print ("***************** CEMLI Creation Completed in " + time + "*****************")
     sys.stdout.flush()
 		
