@@ -58,6 +58,8 @@ driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTO
 time.sleep(3)
 driver.maximize_window()
 print("***************** CEMLI Creation Started for " + CEMLI_NAME + "*****************")
+API_TOKEN = os.getenv('API_TOKEN')
+print(API_TOKEN)
 sys.stdout.flush()
 driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.aspx')
 
