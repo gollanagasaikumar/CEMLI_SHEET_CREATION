@@ -54,12 +54,14 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1366,768")
 #,options=chrome_options
-driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe",options=chrome_options)
+#driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe",options=chrome_options)
+driver = webdriver.Chrome(ChromeDriverManager().install())
 time.sleep(3)
 driver.maximize_window()
 print("***************** CEMLI Creation Started for " + CEMLI_NAME + "*****************")
 x = "$BUILD_USER_ID"
 print(x)
+
 sys.stdout.flush()
 driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.aspx')
 
