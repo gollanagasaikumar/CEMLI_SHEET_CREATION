@@ -47,21 +47,17 @@ class RollBack():
         
         
 CREDENTIALS_LIST = ["nagasaikumar.golla@geappliances.com","515120537","NAsa@321ku"]
-CEMLI_NAME = os.getenv("CEMLI/JIRA Name")
-#os.getenv("CEMLI_Name")
+#CEMLI_NAME = "ab"
+os.getenv("CEMLI_SHEET")
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
-#chrome_options = Options()  
-#chrome_options.add_argument("--headless")
-#chrome_options.add_argument("--window-size=1366,768")
+chrome_options = Options()  
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1366,768")
 #,options=chrome_options
-driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
-#driver = webdriver.Chrome(ChromeDriverManager().install())
-#driver = webdriver.Chrome()
+driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe",options=chrome_options)
 time.sleep(3)
 driver.maximize_window()
 print("***************** CEMLI Creation Started for " + CEMLI_NAME + "*****************")
-
-
 sys.stdout.flush()
 driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.aspx')
 
@@ -149,20 +145,27 @@ try:
         Track.click()
         print(time.ctime() + ": Click on Track")	
         sys.stdout.flush()
+        driver.save_screenshot('./foto3.png')
         TrackSelection = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class,'ms-Dropdown-optionText dropdownOptionText') and .//text()='Shared']")))
         TrackSelection.click()
         print(time.ctime() + ": Selecting Track Type")	
         sys.stdout.flush()
+        driver.save_screenshot('./foto4.png')
+        DropdownClose = driver.find_elements_by_xpath("//span[contains(@class,'ms-Dropdown-caretDown') and .//text()='']")[2].click()
+        time.sleep(2)
+        driver.save_screenshot('./foto5.png')
         Module = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class,'ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder') and .//text()='Select options']")))
         Module.click()
         print(time.ctime() + ": Click on Module")	
         sys.stdout.flush()
+        driver.save_screenshot('./foto6.png')
         ModuleSelection = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class,'ms-Dropdown-optionText dropdownOptionText') and .//text()='Sourcing']")))
         ModuleSelection.click()
         print(time.ctime() + ": Selecting Module Type")	
         sys.stdout.flush()
-        JustClick = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//label[contains(@class,'ms-Label ReactFieldEditor-fieldTitle') and .//text()='Description']")))
-        JustClick.click()
+        driver.save_screenshot('./foto7.png')
+        DropdownClose1 = driver.find_elements_by_xpath("//span[contains(@class,'ms-Dropdown-caretDown') and .//text()='']")[4].click()
+        time.sleep(2)
         Description = driver.find_elements_by_xpath("//input[@placeholder='Enter value here']")[1].send_keys(CEMLI_NAME)
         time.sleep(2)
         print(time.ctime() + ": Enter Description Details")	
@@ -200,6 +203,7 @@ try:
         print("https://geappliances.sharepoint.com/sites/erpdevops/SitePages/"+CEMLI_NAME+".aspx")
         sys.stdout.flush()
 except NoSuchElementException:
+    print("1")
     rb = RollBack(driver)
     return_value = rb.Rollback_Changes(CEMLI_NAME)
     if(int(return_value) == 1):
@@ -208,6 +212,7 @@ except NoSuchElementException:
         print (time.ctime() + ": Error Message :- Element Not Found and Execution got Failed \n Reason :- Element we are trying to access is not found or Slow Network Connection Time Out")
         sys.stdout.flush()
 except StaleElementReferenceException:
+    print("2")
     rb = RollBack(driver)
     return_value = rb.Rollback_Changes(CEMLI_NAME)
     if(int(return_value) == 1):
@@ -216,6 +221,7 @@ except StaleElementReferenceException:
         print (time.ctime() + ": Error Message :- Stale Element reference \n Reason :- Stale Element means an old element or no longer available element")
         sys.stdout.flush()
 except:
+    print("3")
     rb = RollBack(driver)
     return_value = rb.Rollback_Changes(CEMLI_NAME)
     if(int(return_value) == 1):
@@ -230,6 +236,3 @@ finally:
     sys.stdout.flush()
     print ("***************** CEMLI Script Execution Completed *****************")
     sys.stdout.flush()
-
-
-    
