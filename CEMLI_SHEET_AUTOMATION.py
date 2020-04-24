@@ -55,6 +55,7 @@ class RollBack():
 CREDENTIALS_LIST = ["nagasaikumar.golla@geappliances.com","515120537","NAsa@321ku"]
 #CEMLI_NAME = "ab"
 CEMLI_NAME = os.getenv("CEMLI/JIRA Name")
+
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
 chrome_options = Options()  
 chrome_options.add_argument("--headless")
