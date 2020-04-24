@@ -24,25 +24,31 @@ class RollBack():
         CB_Label = "Checkbox for "+Cemliname2Delete+".aspx"
         print(time.ctime() + ": Rolling Back Changes for" + Cemliname2Delete + "Cemli")
         sys.stdout.flush()
-        if(driver.find_element_by_xpath("//div[@aria-label='" + CB_Label + "']")):
-            print(time.ctime() + ": Started Looking for Cemli Page")
-            sys.stdout.flush()
-            click_check = driver.find_element_by_xpath("//div[@aria-label='" + CB_Label + "']");
-            click_check.click()
-            print(time.ctime() + ": Found Cemli Page")
-            sys.stdout.flush()
-            DELETE_CEMLI = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "Delete")))
-            DELETE_CEMLI.click()
-            actions = ActionChains(driver) 
-            actions.send_keys(Keys.TAB * 2)
-            actions.perform()
-            actions = ActionChains(driver) 
-            actions.send_keys(Keys.ENTER)
-            actions.perform()
-            print(time.ctime() + ": Roll Back Changes Completed Succesfully")
-            return "1"
-        else:
-            return "0"
+        try:
+            
+            if(driver.find_element_by_xpath("//div[@aria-label='" + CB_Label + "']")):
+                print(time.ctime() + ": Started Looking for Cemli Page")
+                sys.stdout.flush()
+                click_check = driver.find_element_by_xpath("//div[@aria-label='" + CB_Label + "']");
+                click_check.click()
+                print(time.ctime() + ": Found Cemli Page")
+                sys.stdout.flush()
+                DELETE_CEMLI = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, "Delete")))
+                DELETE_CEMLI.click()
+                actions = ActionChains(driver) 
+                actions.send_keys(Keys.TAB * 2)
+                actions.perform()
+                actions = ActionChains(driver) 
+                actions.send_keys(Keys.ENTER)
+                actions.perform()
+                print(time.ctime() + ": Roll Back Changes Completed Succesfully")
+                return "1"
+            else:
+                return "0"
+        except:
+                print("Cemli Sheet Not Found")
+                sys.stdout.flush()            
+
 
         
         
