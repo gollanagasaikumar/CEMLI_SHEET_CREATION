@@ -55,7 +55,7 @@ class RollBack():
 CREDENTIALS_LIST = ["nagasaikumar.golla@geappliances.com","515120537","NAsa@321ku"]
 #CEMLI_NAME = "ab"
 CEMLI_NAME = os.getenv("CEMLI/JIRA Name")
-CN = os.getenv("USER_ID")
+#CN = os.getenv("USER_ID")
 print(CN)
 sys.stdout.flush()
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
