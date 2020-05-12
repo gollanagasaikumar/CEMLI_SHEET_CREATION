@@ -49,11 +49,8 @@ class RollBack():
                 print("Cemli Sheet Not Found")
                 sys.stdout.flush()            
 
-
         
         
-
-#CEMLI_NAME = "ab"
 CEMLI_NAME = os.getenv("CEMLI/JIRA Name")
 SSOID = os.getenv("BUILD_USER_ID")
 EMAILID = os.getenv("BUILD_USER_EMAIL")
@@ -75,6 +72,7 @@ driver.maximize_window()
 print("***************** CEMLI Creation Started for " + CEMLI_NAME + "*****************")
 sys.stdout.flush()
 driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages/SOA.aspx')
+
 
 try:
     start = time.ctime()
@@ -123,25 +121,23 @@ try:
         #driver.save_screenshot('./foto.png')
         #EditSourceClick1 = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "Ribbon.EditingTools.CPEditTab.Markup-PopupAnchor-Large")))
         #EditSourceClick1.click()
-        #driver.save_screenshot('./foto1.png')
+        driver.save_screenshot('./foto1.png')
         EditSourceClick = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "Ribbon.EditingTools.CPEditTab.Markup.Html.Menu.Html.EditSource-Large")))
         EditSourceClick.click()
         print(time.ctime() + ": Click on Edit Source")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto2.png')
+        driver.save_screenshot('./foto2.png')
         HTMLCode = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "PropertyEditor")))
         HTMLCode.clear()
-        x = '<table width="1313" cellspacing="0" height="954" class="ms-rteTable-0"> <tbody> <tr class="ms-rteTableEvenRow-0"> <td class="ms-rteTableEvenCol-0" style="width: 50%;"> <table width="100%" cellspacing="0" class="ms-rteTable-default"> <tbody> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default" colspan="2" style="width: 50%;"> <strong class="ms-rteFontSize-3">INFORMATION</strong></td> </tr> <tr class="ms-rteTableOddRow-default"> <td valign="top" class="ms-rteTableEvenCol-default" style="width: 13%;"> <strong>JIRA Ticket</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> ' + CEMLI_NAME + ' <br/> </td> </tr> <tr class="ms-rteTableEvenRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Name</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> <br/> </td> </tr> <tr class="ms-rteTableEvenRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Description</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> <br/> </td> </tr> <tr class="ms-rteTableOddRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Source</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> Source CI: <br/>Database Table: <br/>Directory: <br/>File: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Integration</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default">Integration CI: <br/>Objects: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Target</strong></td> <td class="ms-rteTableOddCol-default">Target CI: <br/>API: <br/>Database Table: <br/>Directory: <br/>File: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Dependencies</strong></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>External</strong></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Contacts</strong></td> <td class="ms-rteTableOddCol-default">Source: <br/>Integration: <br/>Target: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Reprocessing</strong></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Regression Testing</strong><br/></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Support Transition Status</strong><br/></td> <td class="ms-rteTableOddCol-default">MD2060: <br/>Code Walk Through: <br/>CEMLI Page: <br/>Final Sign Off: <br/> </td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Sample Payload</strong><br/></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>non-PROD Details</strong><br/></td> <td class="ms-rteTableOddCol-default">dev: <br/>tst: <br/>qa/stg: <br/></td> </tr> </tbody> </table> </td> <td class="ms-rteTableOddCol-0" style="width: 50%;"> <table width="100%" cellspacing="0" class="ms-rteTable-default"> <tbody> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default" colspan="2" style="width: 50%;"> <strong><span><span><strong class="ms-rteFontSize-3">FAILURE MODES<br/></strong></span></span></strong></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default" style="width: 5%;">#1</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#2</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#3</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#4</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#5</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#6</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#7</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#8</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#9</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableFooterRow-default"> <td class="ms-rteTableFooterEvenCol-default" rowspan="1">#10</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> </tbody> </table> </td> </tr> </tbody></table><p> <br/></p>'        
+        x = '<table width="1313" cellspacing="0" height="954" class="ms-rteTable-0"> <tbody> <tr class="ms-rteTableEvenRow-0"> <td class="ms-rteTableEvenCol-0" style="width: 50%;"> <table width="100%" cellspacing="0" class="ms-rteTable-default"> <tbody> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default" colspan="2" style="width: 50%;"> <strong class="ms-rteFontSize-3">INFORMATION</strong></td> </tr> <tr class="ms-rteTableOddRow-default"> <td valign="top" class="ms-rteTableEvenCol-default" style="width: 13%;"> <strong>JIRA Ticket</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> ' + CEMLI_NAME + ' <br/> </td> </tr> <tr class="ms-rteTableEvenRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Name</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> <br/> </td> </tr> <tr class="ms-rteTableEvenRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Description</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> <br/> </td> </tr> <tr class="ms-rteTableOddRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Source</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default"> Source CI: <br/>Database Table: <br/>Directory: <br/>File: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td valign="top" class="ms-rteTableEvenCol-default"> <strong>Integration</strong><br/></td> <td valign="top" class="ms-rteTableOddCol-default">Integration CI: <br/>Objects: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Target</strong></td> <td class="ms-rteTableOddCol-default">Target CI: <br/>API: <br/>Database Table: <br/>Directory: <br/>File: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Dependencies</strong></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>External</strong></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Contacts</strong></td> <td class="ms-rteTableOddCol-default">Source: <br/>Integration: <br/>Target: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Reprocessing</strong></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Regression Testing</strong><br/></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Support Transition Status</strong><br/></td> <td class="ms-rteTableOddCol-default">MD2060: <br/>Code Walk Through: <br/>CEMLI Page: <br/>Final Sign Off: <br/> </td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>Sample Payload</strong><br/></td> <td class="ms-rteTableOddCol-default">?</td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default"> <strong>non-PROD Details</strong><br/></td> <td class="ms-rteTableOddCol-default">dev: <br/>tst: <br/>qa/stg: <br/></td> </tr> </tbody> </table> </td> <td class="ms-rteTableOddCol-0" style="width: 50%;"> <table width="100%" cellspacing="0" class="ms-rteTable-default"> <tbody> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default" colspan="2" style="width: 50%;"> <strong><span><span><strong class="ms-rteFontSize-3">FAILURE MODES<br/></strong></span></span></strong></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default" style="width: 5%;">#1</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#2</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#3</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#4</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#5</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#6</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#7</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableEvenRow-default"> <td class="ms-rteTableEvenCol-default">#8</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableOddRow-default"> <td class="ms-rteTableEvenCol-default">#9</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> <tr class="ms-rteTableFooterRow-default"> <td class="ms-rteTableFooterEvenCol-default" rowspan="1">#10</td> <td class="ms-rteTableOddCol-default">Object: <br/>CI: <br/>Message: <br/>Action: <br/></td> </tr> </tbody> </table> </td> </tr> </tbody></table><p> <br/></p>'
         HTMLCode.send_keys(x)
         time.sleep(3)
         print(time.ctime() + ": Enter HTML Code")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto33.png')
         HTMLCodeSubmit = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "sourcedialog_okbutton")))
         HTMLCodeSubmit.click()
         print(time.ctime() + ": Click on HTML Code Submit")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto333.png')
         Checkin = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, "Ribbon.EditingTools.CPEditTab.EditAndCheckout.Checkout-SelectedItem")))
         Checkin.click()
         print(time.ctime() + ": Click on Check-In")	
@@ -162,25 +158,25 @@ try:
         Track.click()
         print(time.ctime() + ": Click on Track")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto3.png')
+        driver.save_screenshot('./foto3.png')
         TrackSelection = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class,'ms-Dropdown-optionText dropdownOptionText') and .//text()='Shared']")))
         TrackSelection.click()
         print(time.ctime() + ": Selecting Track Type")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto4.png')
+        driver.save_screenshot('./foto4.png')
         DropdownClose = driver.find_elements_by_xpath("//span[contains(@class,'ms-Dropdown-caretDown') and .//text()='']")[2].click()
         time.sleep(2)
-        #driver.save_screenshot('./foto5.png')
+        driver.save_screenshot('./foto5.png')
         Module = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class,'ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder') and .//text()='Select options']")))
         Module.click()
         print(time.ctime() + ": Click on Module")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto6.png')
+        driver.save_screenshot('./foto6.png')
         ModuleSelection = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class,'ms-Dropdown-optionText dropdownOptionText') and .//text()='Sourcing']")))
         ModuleSelection.click()
         print(time.ctime() + ": Selecting Module Type")	
         sys.stdout.flush()
-        #driver.save_screenshot('./foto7.png')
+        driver.save_screenshot('./foto7.png')
         DropdownClose1 = driver.find_elements_by_xpath("//span[contains(@class,'ms-Dropdown-caretDown') and .//text()='']")[4].click()
         time.sleep(2)
         Description = driver.find_elements_by_xpath("//input[@placeholder='Enter value here']")[1].send_keys(CEMLI_NAME)
@@ -253,3 +249,6 @@ finally:
     sys.stdout.flush()
     print ("***************** CEMLI Script Execution Completed *****************")
     sys.stdout.flush()
+
+
+    
