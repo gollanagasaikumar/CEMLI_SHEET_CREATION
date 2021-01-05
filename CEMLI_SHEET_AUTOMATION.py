@@ -60,7 +60,7 @@ EMAILID = os.getenv("BUILD_USER_EMAIL")
 print(EMAILID)
 print(SSOID)
 sys.stdout.flush()
-CREDENTIALS_LIST = [EMAILID,SSOID,"NAsa@321ku"]
+CREDENTIALS_LIST = [EMAILID,SSOID,""]
 #driver = webdriver.Chrome(r"C:\Users\nagasaikumar.golla\Desktop\CEMLI_SHEET_AUTOMATION_SCRIPT\chromedriver.exe")
 chrome_options = Options()  
 chrome_options.add_argument("--headless")
