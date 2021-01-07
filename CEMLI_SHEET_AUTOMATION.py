@@ -19,7 +19,7 @@ class RollBack():
         self.driver = driver
 			
     def Rollback_Changes(self,Cemliname2Delete):
-        self.driver.get('https://geappliances.sharepoint.com/sites/erpdevops/SitePages')
+        self.driver.get('')
         time.sleep(14)
         CB_Label = "Checkbox for "+Cemliname2Delete+".aspx"
         print(time.ctime() + ": Rolling Back Changes for" + Cemliname2Delete + "Cemli")
